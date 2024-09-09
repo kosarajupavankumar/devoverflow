@@ -15,7 +15,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const handleThemeChange = () => {
     if (mode === "dark") {
       setMode("light");
-      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.add("light");
     } else {
       setMode("dark");
       document.documentElement.classList.add("dark");
@@ -36,7 +36,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 export function useTheme() {
   const context = useContext(ThemeContext);
 
-  if (context == undefined) {
+  if (context === undefined) {
     throw new Error("useTheme must be used within a ThemeProvider");
   }
 
