@@ -1,16 +1,18 @@
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
-import React from "react";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
+import { Inter, Space_Grotesk } from "next/font/google";
+import "./globals.css";
 
-import "./global.css";
+import React from "react";
 import { ThemeProvider } from "@/context/ThemeProvider";
+
+export const metadata: Metadata = {
+  title: "DevFlow",
+  description: `A community-driven platform for developers to asking and aswering programming questions, share knowledge, and learn from each other.`,
+  icons: {
+    icon: "/assets/images/site-logo.svg",
+  },
+};
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,20 +26,11 @@ const spaceGrotesk = Space_Grotesk({
   variable: "--font-spaceGrotesk",
 });
 
-export const metadata: Metadata = {
-  title: "devOverFlow",
-  description:
-    "A community-driven platform for asking and answering programming questions Get help with your code. Explore and share the best programming resources.",
-  icons: {
-    icon: "/assets/images/site-logo.svg",
-  },
-};
-
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="en">
       <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
